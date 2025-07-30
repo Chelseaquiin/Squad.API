@@ -2,6 +2,10 @@
 
 namespace Squad.Models.Dtos.Responses
 {
+    /// <summary>
+    /// This class is used to represent the response payload for retrieving all transfers.
+    /// </summary>
+    /// The JsonPropertyName attributes are used to map the C# properties to the JSON keys expected by the HabariPay API.
     public class GetAllTransfersResponse
     {
         [JsonPropertyName("account_number_credited")]

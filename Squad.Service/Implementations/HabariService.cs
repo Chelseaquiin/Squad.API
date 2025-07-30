@@ -14,7 +14,11 @@ namespace Squad.Service.Implementations
         {
             _logger = logger;
         }
-
+        /// <summary>
+        /// This method is used to look up an account using the encrypted payload provided.
+        /// </summary>
+        /// <param name="encryptedPayload"></param>
+        /// <returns> BaseResponse<LookUpResponse> </returns>
         public async Task<BaseResponse<LookUpResponse>> LookUp(EncryptedPayload encryptedPayload)
         {
             try
@@ -46,12 +50,18 @@ namespace Squad.Service.Implementations
                 };
             }
         }
+        /// <summary>
+        /// This method is used to Fund an account using the encrypted payload provided
+        /// </summary>
+        /// <param name="encryptedPayload"></param>
+        /// <returns> BaseResponse<TransferResponse> </returns>
+        /// No Sample Response was Provided. So the TransferResponse is empty
         public async Task<BaseResponse<TransferResponse>> Transfer(EncryptedPayload encryptedPayload)
         {
-            //I have no idea what the error response should look like. They only gave a sample response for the lookup and the get all transfers. This is the reason transfer response is empty
+            
             try
             {
-                var request = Helper.DecryptAndDeserialize<LookUpRequest>(encryptedPayload.EncryptedRequest);
+                var request = Helper.DecryptAndDeserialize<TransferRequest>(encryptedPayload.EncryptedRequest);
                 if (request == null)
                 {
                     return new BaseResponse<TransferResponse>
@@ -79,11 +89,17 @@ namespace Squad.Service.Implementations
             }
 
         }
+        /// <summary>
+        /// This method is used to re-query a transfer using the encrypted payload provided.
+        /// </summary>
+        /// <param name="encryptedPayload"></param>
+        /// <returns> BaseResponse<RequeryResponse> </returns>
+        /// No Sample Response was Provided. So the RequeryResponse is empty
         public async Task<BaseResponse<RequeryResponse>> ReQuery(EncryptedPayload encryptedPayload)
         {
             try
             {
-                var request = Helper.DecryptAndDeserialize<LookUpRequest>(encryptedPayload.EncryptedRequest);
+                var request = Helper.DecryptAndDeserialize<ReQueryRequest>(encryptedPayload.EncryptedRequest);
                 if (request == null)
                 {
                     return new BaseResponse<RequeryResponse>

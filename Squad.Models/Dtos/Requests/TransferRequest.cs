@@ -2,6 +2,10 @@
 
 namespace Squad.Models.Dtos.Requests
 {
+    /// <summary>
+    /// This class is used to represent the request payload for transferring funds to an account.
+    /// </summary>
+    /// The JsonPropertyName attributes are used to map the C# properties to the JSON keys expected by the HabariPay API.
     public class TransferRequest
     {
         [JsonPropertyName("remark")]
@@ -18,12 +22,6 @@ namespace Squad.Models.Dtos.Requests
         public string TransactionReference { get; set; }
         [JsonPropertyName("account_name")]
         public string AccountName { get; set; }
-
-//C# has a naming convention which I am following, but the json objects need to tally with HabariPay's payload. That's what the JsonPropertyName is for
-
-
-
-
 
 
     }
